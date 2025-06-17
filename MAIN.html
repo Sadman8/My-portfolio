@@ -58,13 +58,27 @@
         }
     </script>
     <style>
-        /* Interactive Pattern Background */
+.bg-image-right {
+    position: fixed;
+    top: 0;
+    right: 0;
+    height: 100%;
+    width: auto;
+    z-index: -2;
+    opacity: 0.15;
+    pointer-events: none;
+    transition: opacity 0.2s ease;
+    will-change: transform;
+    max-width: 50%;
+}
+
+/*Interactive Pattern Background*/ 
         .bg-pattern {
             position: fixed;
             inset: 0;
             z-index: -10;
-            --c: #3b82f6; /* Blue-500 from Tailwind */
-            background-color: var(--bg-color);
+            --c: #3b83f600; /* Blue-500 from Tailwind */
+            /*background-color: var(--bg-color);*/
             background-image: 
                 radial-gradient(4px 100px at 0px 235px, var(--c), #0000),
                 radial-gradient(4px 100px at 300px 235px, var(--c), #0000),
@@ -102,24 +116,9 @@
                 radial-gradient(4px 100px at 0px 210px, var(--c), #0000),
                 radial-gradient(4px 100px at 300px 210px, var(--c), #0000),
                 radial-gradient(1.5px 1.5px at 150px 105px, var(--c) 100%, #0000 150%);
-            background-size: 
-                300px 235px, 300px 235px, 300px 235px, 
-                300px 252px, 300px 252px, 300px 252px, 
-                300px 150px, 300px 150px, 300px 150px, 
-                300px 253px, 300px 253px, 300px 253px, 
-                300px 204px, 300px 204px, 300px 204px, 
-                300px 134px, 300px 134px, 300px 134px, 
-                300px 179px, 300px 179px, 300px 179px, 
-                300px 299px, 300px 299px, 300px 299px, 
-                300px 215px, 300px 215px, 300px 215px, 
-                300px 281px, 300px 281px, 300px 281px, 
-                300px 158px, 300px 158px, 300px 158px, 
-                300px 210px, 300px 210px, 300px 210px;
-            background-repeat: repeat;
-            animation: hi 150s linear infinite;
-            opacity: 0.3;
-            will-change: transform;
+            
         }
+        
 
         .bg-pattern::after {
             content: "";
@@ -177,7 +176,7 @@
             --bg-color: #f5f5f5;
             --card-bg: #ffffff;
             --text-color: #1a1a1a;
-            --accent-color: #38bdf8;
+            --accent-color: #38bff8fe;
             --accent-color2: #a78bfa;
         }
         
@@ -200,12 +199,12 @@
             border-radius: 50%;
             background: conic-gradient(
                 from 0deg,
-                #42a5f5,
-                #1e88e5,
-                #1565c0,
-                #0d47a1,
-                #1e88e5,
-                #42a5f5
+                #42a4f500,
+                #1e88e500,
+                #1565c000,
+                #0d48a100,
+                #1e88e500,
+                #42a4f500
             );
             animation: blobGrow 15s ease infinite;
             mix-blend-mode: overlay;
@@ -216,18 +215,6 @@
         }
 
 
-        .background-animation::before {
-            content: '';
-            position: absolute;
-            inset: -50%;
-            background: radial-gradient(
-                circle at center,
-                rgba(30, 136, 229, 0.3) 0%,
-                rgba(21, 101, 192, 0.2) 20%,
-                transparent 50%
-            );
-            animation: pulse 8s ease infinite alternate;
-        }
 
         @keyframes pulse {
             0%, 100% {
@@ -448,7 +435,7 @@
     </style>
     
     <style>
-        @keyframes fall {
+       /* @keyframes fall {
             to { transform: translateY(calc(100vh + 50px)); }
         }
         
@@ -457,14 +444,15 @@
         }
         
         /* Make rain more visible in dark mode */
-        .dark .raindrop {
-            background-color: #1e88e5 !important;
-        }
+        /*.dark .raindrop {
+            background-color: #1e88e500 !important;
+        }*/
     </style>
 </head>
 <body class="relative overflow-x-hidden bg-light-100 text-light-700 dark:bg-dark-900 dark:text-light-200">
     <!-- Background Pattern -->
     <div class="bg-pattern"></div>
+    <div><img src="main/img/12.png" alt="Right Background" class="bg-image-right" id="bgImage"></div>
     
     <!-- Splash Screen -->
     <div id="splash-screen" class="splash-screen">
@@ -616,22 +604,25 @@
                 </div>
             </div>
             
-            <div class="md:w-1/2 flex justify-center">
+           <!-- <div class="md:w-1/2 flex justify-center">
                 <div class="relative">
                     <div class="absolute w-full h-full -z-10 top-8 left-8 bg-accent2/20 rounded-full"></div>
                     <div class="absolute w-72 h-72 rounded-full border-4 border-accent opacity-10 top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2"></div>
                     <div class="absolute w-80 h-80 rounded-full border-2 border-accent/30 top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2"></div>
                     <div class="relative w-64 h-64 mt-16 flex items-center justify-center rounded-xl overflow-hidden">
-                    <!-- Bigger Transparent Image -->
+                   
+
+                    <!-- Bigger Transparent Image 
                         <section class="relative w-full flex justify-center items-center mt-10">
-                                <div class="relative w-64 h-64 rounded-xl overflow-hidden flex items-center justify-center">
-                                <!-- Optional: Blurred Background -->
-                                <div class="absolute inset-0 bg-white/30 dark:bg-white/10 backdrop-blur-md rounded-xl"></div>
+                        <div class="relative w-64 h-64 rounded-xl overflow-hidden flex items-center justify-center">
+                             Optional: Blurred Background 
+                            <div class="absolute inset-0 bg-white/30 dark:bg-white/10 backdrop-blur-md rounded-xl"></div>
                             
-                                <!-- Your Image with 1:1 Aspect Ratio -->
-                                <img src="main/img/me.jpg" alt="My Photo" class="relative z-10 w-full h-full object-cover rounded-xl" />
-                            </div>
+                             Your Image with 1:1 Aspect Ratio 
+                            <img src="main/img/me.jpg" alt="My Photo" class="relative z-10 w-full h-full object-cover rounded-xl" />-->
+                        </div>
                         </section>
+
                     </div>
 
 
@@ -742,7 +733,7 @@
                                     <div class="ml-4">
                                         <h4 class="font-bold">Daffodil International University</h4>
                                         <p class="text-sm">B.Sc. in Software Engineering</p>
-                                        <p class="text-sm opacity-75">2024 - Present</p>
+                                        <p class="text-sm opacity-75">2020 - Present</p>
                                     </div>
                                 </div>
                             </div>
@@ -914,7 +905,7 @@
                         <div class="timeline-dot"></div>
                         <div class="timeline-content pl-8 relative">
                             <div class="bg-card-bg p-6 rounded-xl border border-light-300 dark:border-dark-700 shadow-sm">
-                                <p class="text-sm font-medium text-accent mb-2">Jun 2024</p>
+                                <p class="text-sm font-medium text-accent mb-2">Sep 2020</p>
                                 <h3 class="text-xl font-bold mb-2">Started University</h3>
                                 <p class="text-light-500 dark:text-light-400">
                                     Began B.Sc. in Software Engineering at Daffodil International University, excited to dive into the world of programming and technology.
@@ -1095,6 +1086,113 @@
     <button id="back-to-top" class="fixed bottom-6 left-0 w-12 h-12 rounded-full flex items-center justify-center opacity-100 visible transition-all">
         <i class="fas fa-arrow-up"></i>
     </button>
+    
+    <!-- Rain Animation Script -->
+    <script>
+    /*document.addEventListener('DOMContentLoaded', () => {
+        const container = document.getElementById('rain-container');
+        let drops = [];
+        const maxDrops = 0;
+        const mouse = { x: 0, y: 0, radius: 0 };
+
+        // Track mouse position
+        window.addEventListener('mousemove', (e) => {
+            mouse.x = e.clientX;
+            mouse.y = e.clientY;
+        });
+
+        // Create raindrops
+        function initRain() {
+            container.innerHTML = '';
+            drops = [];
+            
+            for (let i = 0; i < maxDrops; i++) {
+                createDrop();
+            }
+            
+            animateRain();
+        }
+
+        function createDrop() {
+            const drop = document.createElement('div');
+            drop.className = 'raindrop';
+            
+            // Random properties
+            const left = Math.random() * 100;
+            const height = Math.random() * 3 + 1;
+            const delay = Math.random() * 5;
+            const duration = Math.random() * 0.5 + 0.5;
+            const opacity = Math.random() * 0.3 + 0.1;
+            
+            // Initial position
+            let top = -(Math.random() * 100 + 50);
+            
+            // Style the raindrop
+            drop.style.position = 'absolute';
+            drop.style.left = `${left}%`;
+            drop.style.top = `${top}px`;
+            drop.style.width = '1px';
+            drop.style.height = `${height}rem`;
+            drop.style.backgroundColor = '#38bdf8';
+            drop.style.opacity = opacity;
+            drop.style.animation = `fall ${duration}s linear ${delay}s infinite`;
+            
+            container.appendChild(drop);
+            
+            drops.push({
+                element: drop,
+                left,
+                top,
+                speed: Math.random() * 2 + 1,
+                sway: Math.random() * 2 - 1,
+                originalLeft: left
+            });
+        }
+
+        function animateRain() {
+            // Update each raindrop
+            drops.forEach(drop => {
+                let newTop = drop.top + drop.speed;
+                
+                // Check if drop reached bottom
+                if (newTop > window.innerHeight + 0) {
+                    newTop = -0;
+                    drop.top = newTop;
+                    drop.left = drop.originalLeft;
+                } else {
+                    drop.top = newTop;
+                }
+                
+                // Mouse interaction
+                const dx = mouse.x - (drop.left / 100 * window.innerWidth);
+                const dy = mouse.y - drop.top;
+                const distance = Math.sqrt(dx * dx + dy * dy);
+                
+                if (distance < mouse.radius) {
+                    const angle = Math.atan2(dy, dx);
+                    const force = (mouse.radius - distance) / mouse.radius * 5;
+                    drop.left += Math.cos(angle) * force * drop.sway;
+                } else {
+                    // Return to original position
+                    const diff = drop.originalLeft - drop.left;
+                    drop.left += diff * 0.1;
+                }
+                
+                // Apply updated position
+                drop.element.style.top = `${drop.top}px`;
+                drop.element.style.left = `${drop.left}%`;
+            });
+            
+            requestAnimationFrame(animateRain);
+        }
+
+        // Initialize rain
+        initRain();
+        
+        // Update on resize
+        window.addEventListener('resize', initRain);
+    });*/
+    </script>
 
     <!-- Scripts -->
     <script>
@@ -1266,6 +1364,129 @@
 
             // Initialize color
             updatePatternColor();
+            const ctx = canvas.getContext('2d');
+            canvas.width = window.innerWidth;
+            canvas.height = window.innerHeight;
+
+            let particles = [];
+            const particleCount = 150;
+            const mouse = { x: null, y: null, radius: 100 };
+            
+            // Mouse movement tracking
+            window.addEventListener('mousemove', (e) => {
+                mouse.x = e.x;
+                mouse.y = e.y;
+            });
+            
+            window.addEventListener('mouseout', () => {
+                mouse.x = undefined;
+                mouse.y = undefined;
+            });
+
+            window.addEventListener('resize', () => {
+                canvas.width = window.innerWidth;
+                canvas.height = window.innerHeight;
+            });
+
+            class Particle {
+                constructor() {
+                    this.x = Math.random() * canvas.width;
+                    this.y = Math.random() * canvas.height;
+                    this.size = Math.random() * 3 + 1;
+                    this.baseSize = this.size;
+                    this.density = Math.random() * 30 + 1;
+                    this.color = html.classList.contains('dark') 
+                        ? `rgba(66, 165, 245, ${Math.random() * 0.5})` 
+                        : `rgba(30, 136, 229, ${Math.random() * 0.5})`;
+                    this.speedX = Math.random() * 1 - 0.5;
+                    this.speedY = Math.random() * 1 - 0.5;
+                }
+                
+                draw() {
+                    ctx.beginPath();
+                    ctx.arc(this.x, this.y, this.size, 0, Math.PI * 2);
+                    ctx.closePath();
+                    ctx.fillStyle = this.color;
+                    ctx.fill();
+                }
+                
+                update() {
+                    // Boundary check
+                    if (this.x < 0 || this.x > canvas.width) {
+                        this.speedX *= -1;
+                    }
+                    
+                    if (this.y < 0 || this.y > canvas.height) {
+                        this.speedY *= -1;
+                    }
+                    
+                    // Mouse interaction
+                    let dx = mouse.x - this.x;
+                    let dy = mouse.y - this.y;
+                    let distance = Math.sqrt(dx * dx + dy * dy);
+                    
+                    // Particle repulsion effect
+                    if (mouse.x && mouse.y && distance < mouse.radius) {
+                        let forceDirectionX = dx / distance;
+                        let forceDirectionY = dy / distance;
+                        let force = (mouse.radius - distance) / mouse.radius;
+                        let directionX = forceDirectionX * force * this.density * 0.6;
+                        let directionY = forceDirectionY * force * this.density * 0.6;
+                        
+                        this.x -= directionX;
+                        this.y -= directionY;
+                        this.size = this.baseSize * 2;
+                    } else {
+                        this.x += this.speedX;
+                        this.y += this.speedY;
+                        this.size = Math.max(this.size * 0.97, this.baseSize);
+                    }
+                    
+                    this.draw();
+                }
+            }
+
+            function connect() {
+                let opacity = html.classList.contains('dark') ? 0.1 : 0.05;
+                
+                for (let a = 0; a < particles.length; a++) {
+                    for (let b = a; b < particles.length; b++) {
+                        let dx = particles[a].x - particles[b].x;
+                        let dy = particles[a].y - particles[b].y;
+                        let distance = Math.sqrt(dx * dx + dy * dy);
+                        
+                        if (distance < 120) {
+                            ctx.strokeStyle = `rgba(56, 189, 248, ${opacity * (1 - distance/120)})`;
+                            ctx.lineWidth = 1;
+                            ctx.beginPath();
+                            ctx.moveTo(particles[a].x, particles[a].y);
+                            ctx.lineTo(particles[b].x, particles[b].y);
+                            ctx.stroke();
+                        }
+                    }
+                }
+            }
+
+            function animate() {
+                ctx.clearRect(0, 0, canvas.width, canvas.height);
+                
+                for (let i = 0; i < particles.length; i++) {
+                    particles[i].update();
+                }
+                
+                connect();
+                requestAnimationFrame(animate);
+            }
+
+            function init() {
+                particles = [];
+                for (let i = 0; i < particleCount; i++) {
+                    particles.push(new Particle());
+                }
+                animate();
+            }
+
+            init();
 
             // Typing animation
             const typedTextSpan = document.querySelector('.typed-text');
@@ -1312,6 +1533,19 @@
                 heroSection.style.backgroundPositionY = yOffset * 0.5 + "px";
             });
         });
+const bgImage = document.getElementById('bgImage');
+
+window.addEventListener('mousemove', (e) => {
+  const centerX = window.innerWidth / 2;
+  const centerY = window.innerHeight / 2;
+
+  // Small movement multipliers — reduce for subtlety
+  const moveX = (e.clientX - centerX) * 0.01;
+  const moveY = (e.clientY - centerY) * 0.01;
+
+  // Move only horizontally and vertically slightly
+  bgImage.style.transform = `translate(${moveX}px, ${moveY}px)`;
+});
     </script>
 </body>
 </html>
