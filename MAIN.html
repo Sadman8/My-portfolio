@@ -43,6 +43,7 @@
             background-blend-mode: overlay, screen, hard-light;
             overflow: hidden;
             animation: aurora-drift 25s infinite alternate ease-in-out;
+            z-index: -2;
         }
 
         .container::before {
@@ -138,7 +139,7 @@
             width: 100%;
             height: 100%;
             z-index: -1;
-            opacity: 0.8;
+            opacity: 0.3;
         }
 
         spline-viewer {
@@ -150,9 +151,9 @@
         .content-overlay {
             position: relative;
             z-index: 1;
-            background: rgba(0, 0, 0, 0.3);
+            background: rgba(0, 0, 0, 0.2);
             min-height: 100vh;
-            backdrop-filter: blur(2px);
+            backdrop-filter: blur(1px);
         }
 
         /* Header */
