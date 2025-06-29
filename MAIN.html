@@ -330,8 +330,7 @@
 <body>
     <!-- Spline 3D Background -->
     <div class="spline-container">
-        <script type="module" src="https://unpkg.com/@splinetool/viewer@1.10.16/build/spline-viewer.js"></script>
-        <spline-viewer url="https://prod.spline.design/7S1BzxzfC1kePBqm/scene.splinecode"></spline-viewer>
+        <!-- Spline viewer will be dynamically added here -->
     </div>
 
     <!-- Content Overlay -->
@@ -446,7 +445,16 @@
         </footer>
     </div>
 
+    <script type="module" src="https://unpkg.com/@splinetool/viewer@1.10.16/build/spline-viewer.js"></script>
     <script>
+        // Initialize Spline viewer after DOM is loaded
+        document.addEventListener('DOMContentLoaded', function() {
+            const splineContainer = document.querySelector('.spline-container');
+            const splineViewer = document.createElement('spline-viewer');
+            splineViewer.setAttribute('url', 'https://prod.spline.design/7S1BzxzfC1kePBqm/scene.splinecode');
+            splineContainer.appendChild(splineViewer);
+        });
+
         // Smooth scrolling for navigation links
         document.querySelectorAll('a[href^="#"]').forEach(anchor => {
             anchor.addEventListener('click', function (e) {
